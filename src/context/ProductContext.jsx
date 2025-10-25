@@ -1,29 +1,33 @@
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import fetchAPI from "../utils/fetchApi";
+
 
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "light"
-  );
-
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem("theme", theme);
+    const storedProducts = localStorage.getItem("products");
 
-    document.documentElement.classList.remove("light", "dark-theme");
-    if (theme == "dark") {
-      document.documentElement.classList.add("dark-theme");
+    if (storedProducts && JSON.parse(storedProducts).length > 0) {
+      setProducts(JSON.parse(storedProducts));
     } else {
-      document.documentElement.classList.add("light");
+      const loadProducts = async () => {
+        try {
+          const data = await fetchAPI();
+          setProducts(data);
+          localStorage.setItem("products", JSON.stringify(data));
+        } catch (error) {
+          console.error("Error fetching products:", error);
+        }
+      };
+      loadProducts();
     }
-  }, [theme]);
+  }, []);
 
   return (
-    <ProductContext.Provider value={{ theme, toggleTheme }}>
+    <ProductContext.Provider value={{ products, setProducts }}>
       {children}
     </ProductContext.Provider>
   );
