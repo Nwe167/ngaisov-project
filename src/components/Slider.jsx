@@ -3,7 +3,7 @@ import "../assets/RotateGallery.css"; // keep your custom animation file
 
 const RotateGallery = () => {
   return (
-    <section className="relative w-full h-[60vh] md:h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-r from-[#ffffff] to-[#e81e6f] text-white">
+    <section className="relative w-full h-[60vh] mt-[80px] md:h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-r from-[#ffffff] to-[#e81e6f] text-white">
       {/* Overlay for smooth gradient or dim effect */}
       <div className="absolute inset-0 bg-black/20"></div>
 

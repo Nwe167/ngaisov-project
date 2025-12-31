@@ -33,7 +33,7 @@ const Banner = () => {
 
   return (
     <section className="w-full bg-pink-200">
-      <div className="max-w-screen-xl mx-auto relative overflow-hidden rounded-2xl shadow-lg">
+      <div className=" mx-auto relative overflow-hidden rounded-2xl shadow-lg">
         {/* SLIDER WRAPPER */}
         <div
           className="flex transition-transform duration-700 ease-in-out"
