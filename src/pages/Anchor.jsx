@@ -27,25 +27,25 @@ END:VCARD`;
   }, []);
 
   return (
-    <div className={`min-h-screen mt-[80px] bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900 ${theme === "dark" ? "bg-white" : " "}`}>
+    <div className="min-h-screen mt-[80px]  from-slate-950 via-purple-950 to-slate-900 ">
       
       {/* HERO PROFILE SECTION */}
-      <section className="relative flex justify-center items-center min-h-screen p-4 overflow-hidden">
+      <section className="relative flex justify-center items-center min-h-screen p-4 overflow-hidden ">
         {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden ">
           <div className="absolute top-20 left-20 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
           <div className="absolute top-40 right-20 w-72 h-72 bg-pink-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
           <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-2000"></div>
         </div>
 
-        <div className={`max-w-md w-full relative transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`max-w-md w-full relative transition-all duration-1000 transform bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900 rounded-3xl  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="bg-white/5 backdrop-blur-2xl rounded-3xl shadow-2xl p-8 border border-white/10 relative overflow-hidden group hover:border-white/20 transition-all duration-500">
             
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             {/* Profile Image */}
-            <div className="flex justify-center mb- relative z-10">
+            <div className="flex justify-center mb- relative z-10 ">
               <div className="relative group/img">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-blue-500 rounded-full blur-xl group-hover/img:blur-2xl transition-all duration-500 animate-pulse"></div>
                 <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl transform group-hover/img:scale-105 group-hover/img:rotate-3 transition-all duration-500">
@@ -60,7 +60,7 @@ END:VCARD`;
             </div>
             
             {/* Name & Title */}
-            <div className="text-center mb-6 relative z-10">
+            <div className="text-center mb-6 relative z-10   ">
               <h2 className="text-4xl font-bold text-white mb-3 tracking-tight">
                 <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
                   Chea Dane
@@ -195,41 +195,41 @@ END:VCARD`;
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4">
+            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-900 to-blue-400 bg-clip-text text-transparent mb-4">
               Get in Touch
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            <p className=" text-lg max-w-2xl mx-auto">
               We'd love to hear from you! Whether you have a question or need help — we're here for you.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center ">
             {/* Form */}
-            <div className="bg-white/5 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-white/10 space-y-6">
+            <div className="bg-white/5 backdrop-blur-xl  p-8 rounded-3xl shadow-2xl border border-white/10 space-y-6">
               <div>
-                <label className="block text-white font-semibold mb-2">Your Name</label>
+                <label className="block  font-semibold mb-2">Your Name</label>
                 <input
                   type="text"
                   placeholder="Enter your name"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-300"
+                  className="w-full bg-black/5 border border-white/50 rounded-xl p-4  placeholder-black/40 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-300"
                 />
               </div>
 
               <div>
-                <label className="block text-white font-semibold mb-2">Email Address</label>
+                <label className="block  font-semibold mb-2">Email Address</label>
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-300"
+                  className="w-full bg-black/5 border border-white/50 rounded-xl p-4  placeholder-black/40 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-300"
                 />
               </div>
 
               <div>
-                <label className="block text-white font-semibold mb-2">Message</label>
+                <label className="block  font-semibold mb-2">Message</label>
                 <textarea
                   rows="5"
                   placeholder="Type your message..."
-                  className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-white/40 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none resize-none transition-all duration-300"
+                  className="w-full bg-black/5 border border-white/50 rounded-xl p-4  placeholder-black/40 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-300"
                 ></textarea>
               </div>
 
@@ -248,9 +248,9 @@ END:VCARD`;
                 alt="Contact"
                 className="rounded-3xl shadow-2xl border border-white/10"
               />
-              <div className="bg-white/5 backdrop-blur-xl p-6 rounded-3xl border border-white/10">
-                <h3 className="text-2xl font-bold text-white mb-4">Contact Information</h3>
-                <div className="space-y-3 text-white/70">
+              <div className="backdrop-blur-xl p-6 rounded-3xl  w-full bg-black/5 border border-white/50   placeholder-black/40 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-300">
+                <h3 className="text-2xl font-bold mb-4">Contact Information</h3>
+                <div className="space-y-3">
                   <p>📍 123 Blossom Street, Phnom Penh</p>
                   <p>📧 support@company.com</p>
                   <p>📞 +855 12 345 678</p>

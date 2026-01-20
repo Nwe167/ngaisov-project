@@ -17,7 +17,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="mt-[80px] bg-gradient-to-b from-gray-50 to-white min-h-screen">
+    <div className="mt-[80px]  from-gray-50 to-white min-h-screen">
 
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 text-white py-24 text-center relative overflow-hidden">
@@ -64,7 +64,7 @@ const Profile = () => {
         <div className="text-center mb-12">
           <span className="text-purple-600 font-semibold text-sm uppercase tracking-wider">About Us</span>
           <h2 className="text-3xl md:text-4xl font-bold mt-3 mb-6">Why Choose Our Store?</h2>
-          <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto">
+          <p className=" text-base md:text-lg max-w-3xl mx-auto">
             We are a customer-focused tech store providing high-quality products
             and reliable support. Our mission is to deliver the best digital
             experience with fast service and friendly support.
@@ -77,17 +77,17 @@ const Profile = () => {
             { icon: "🔒", title: "Secure Payment", desc: "Safe and encrypted payment methods for your security" },
             { icon: "💎", title: "Premium Quality", desc: "Only authentic products from trusted brands" }
           ].map((feature, i) => (
-            <div key={i} className="group bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl hover:shadow-2xl transition-all">
+            <div key={i} className="group bg-white text-gray-600 from-purple-50 to-pink-50 p-8 rounded-2xl hover:shadow-2xl transition-all">
               <div className="text-4xl md:text-5xl mb-4 group-hover:scale-110 transition-transform">{feature.icon}</div>
               <h3 className="text-lg md:text-xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-sm md:text-base text-gray-600">{feature.desc}</p>
+              <p className="text-sm md:text-base ">{feature.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Contact Methods Section */}
-      <section className="bg-gradient-to-br from-purple-100 to-pink-100 py-20">
+      <section className="bg-gradient-to-br from-blue-300 to-pink-400 py-20">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Multiple Ways to Reach Us</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
@@ -99,7 +99,7 @@ const Profile = () => {
             ].map((method, i) => (
               <div key={i} className="bg-white p-5 md:p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition-all transform hover:-translate-y-2">
                 <div className="text-4xl md:text-5xl mb-4">{method.icon}</div>
-                <h3 className="font-bold text-base md:text-lg mb-2">{method.title}</h3>
+                <h3 className="font-bold text-gray-500 text-base md:text-lg mb-2">{method.title}</h3>
                 <p className="text-xs md:text-sm text-purple-600 font-semibold mb-1">{method.detail}</p>
                 <p className="text-xs text-gray-500">{method.subtitle}</p>
               </div>
@@ -113,7 +113,7 @@ const Profile = () => {
 
         {/* Contact Form */}
         <div className="bg-white shadow-2xl rounded-2xl p-8 md:p-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">Send us a Message</h2>
+          <h2 className="text-2xl md:text-3xl text-gray-500 font-bold mb-3">Send us a Message</h2>
           <p className="text-gray-600 mb-8">Fill out the form and we'll respond within 24 hours</p>
           
           {/* Tabs */}
@@ -133,7 +133,7 @@ const Profile = () => {
             ))}
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-5 text-black  ">
             <div>
               <label className="block text-sm font-semibold mb-2">Full Name</label>
               <input
@@ -179,7 +179,7 @@ const Profile = () => {
         {/* Contact Info & Hours */}
         <div className="space-y-8">
           {/* Contact Information */}
-          <div className="bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-2xl rounded-2xl p-8">
+          <div className="bg-gradient-to-br from-purple-500 to-pink-500 shadow-2xl rounded-2xl p-8">
             <h2 className="text-xl md:text-2xl font-bold mb-6">Contact Information</h2>
             <ul className="space-y-5">
               <li className="flex items-start gap-4">
@@ -207,7 +207,7 @@ const Profile = () => {
           </div>
 
           {/* Opening Hours */}
-          <div className="bg-white shadow-xl rounded-2xl p-8">
+          <div className="bg-white shadow-xl  text-gray-700 rounded-2xl p-8">
             <h2 className="text-xl md:text-2xl font-bold mb-6">Opening Hours</h2>
             <div className="space-y-4">
               <div className="flex justify-between items-center pb-3 border-b">
@@ -227,7 +227,7 @@ const Profile = () => {
 
           {/* Social Media */}
           <div className="bg-white shadow-xl rounded-2xl p-8">
-            <h2 className="text-xl md:text-2xl font-bold mb-6">Follow Us</h2>
+            <h2 className="text-xl md:text-2xl text-gray-700 font-bold mb-6">Follow Us</h2>
             <div className="flex gap-4">
               {["📘", "📷", "🐦", "💼"].map((icon, i) => (
                 <button
@@ -243,7 +243,7 @@ const Profile = () => {
       </section>
 
       {/* Customer Reviews Section */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-50 py-20 text-gray-700 ">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">What Our Customers Say</h2>
           <p className="text-center text-gray-600 mb-16">Real feedback from real customers</p>
@@ -254,7 +254,7 @@ const Profile = () => {
               { name: "David Kim", rating: 5, review: "Best tech store in Phnom Penh! Great prices, authentic products, and super helpful staff. Will shop here again!", avatar: "👨" },
               { name: "Maria Santos", rating: 5, review: "Fast delivery and excellent customer support. They went above and beyond to help me choose the right phone.", avatar: "👩‍💼" }
             ].map((review, i) => (
-              <div key={i} className="bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+              <div key={i} className="bg-white text-gray-700 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="text-3xl md:text-4xl">{review.avatar}</div>
                   <div>
@@ -272,7 +272,7 @@ const Profile = () => {
       {/* FAQ Section */}
       <section className="bg-white py-20">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Frequently Asked Questions</h2>
+          <h2 className="text-3xl md:text-4xl text-gray-700 font-bold text-center mb-4">Frequently Asked Questions</h2>
           <p className="text-center text-gray-600 mb-16">Find answers to common questions</p>
           
           <div className="space-y-6">
@@ -294,9 +294,9 @@ const Profile = () => {
       </section>
 
       {/* Team Section */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      <section className="max-w-6xl mx-auto px-6 text-gray-700 py-20">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Meet Our Team</h2>
-        <p className="text-center text-gray-600 mb-16">Dedicated professionals ready to help you</p>
+        <p className="text-center text-black mb-16">Dedicated professionals ready to help you</p>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {[
@@ -318,9 +318,9 @@ const Profile = () => {
       </section>
 
       {/* Location Map Section */}
-      <section className="bg-gray-100 py-20">
+      <section className="bg-gray-100 py-20 text-gray-700 ">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Visit Our Showroom</h2>
+          <h2 className="text-3xl md:text-4xl text-gray-700  font-bold text-center mb-16">Visit Our Showroom</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="bg-gradient-to-br from-purple-500 to-pink-500 h-64 md:h-96 rounded-2xl flex items-center justify-center text-white text-5xl md:text-6xl shadow-2xl">
               🗺️

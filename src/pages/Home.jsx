@@ -127,7 +127,7 @@ const Home = () => {
 
                 <div className="absolute bottom-32 left-10 bg-white p-4 rounded-2xl shadow-xl animate-pulse">
                   <Heart className="w-8 h-8 text-pink-500 fill-current" />
-                  <div className="text-xs font-bold mt-1">Fan Favorite</div>
+                  <div className="text-xs text-gray-700 font-bold mt-1">Fan Favorite</div>
                 </div>
               </div>
             </div>
@@ -139,11 +139,11 @@ const Home = () => {
       {/* Categories Section */}
       <section className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Shop by Category</h2>
+          <h2 className="text-4xl font-bold mb-4">Shop by Category</h2>
           <p className=" text-lg">Find your perfect skincare solution</p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 text-gray-700 lg:grid-cols-4 gap-6">
           {categories.map((category, index) => (
             <div
               key={index}

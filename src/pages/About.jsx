@@ -66,16 +66,16 @@ const About = () => {
       <Banner />
 
       {/* Featured Products */}
-      <section className="py-16 px-5 md:px-20">
-        <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-10 text-center">
+      <section className="py-16 px-5 md:px-20 ">
+        <h2 className="text-3xl font-bold  mb-10 text-center">
           Featured Products
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 ">
           {products.map((product) => (
             <div
               key={product.id}
-              className=" rounded-2xl shadow-lg p-5 flex flex-col items-center hover:scale-105 transition-transform"
+              className=" rounded-2xl shadow-lg p-5 flex flex-col items-center hover:scale-105 transition-transform bg-white"
             >
               <img
                 src={product.image}

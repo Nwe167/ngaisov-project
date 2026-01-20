@@ -62,7 +62,7 @@ const SkincareProductPage = () => {
   if (sortBy === "Price: High to Low") filteredProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
 
   return (
-    <div className={`min-h-screen    from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 ${theme === "dark" ? "bg-white" : ""}`}>
+    <div className={`mt-[-20px]   from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 ${theme === "dark" ? "bg-white" : ""}`}>
 
       <div className="pt-20">
         {/* HERO BANNER */}
@@ -79,7 +79,7 @@ const SkincareProductPage = () => {
         </section>
 
         {/* FEATURES */}
-        <section className={`py-12   `}>
+        <section className={`py-12   from-purple-50 to-white ${theme === "dark" ? "bg-white" : "  text-black"}`}>
           <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { icon: "🚚", title: "Free Shipping", desc: "Orders over $50" },
@@ -87,7 +87,7 @@ const SkincareProductPage = () => {
               { icon: "🔄", title: "Easy Returns", desc: "30-day guarantee" },
               { icon: "💳", title: "Secure Payment", desc: "Safe checkout" }
             ].map((f, i) => (
-              <div key={i} className={`text-center p-4 hover:shadow-lg rounded-xl transition-all dark:hover:bg-gray-700 ${theme === "dark" ? "bg-white" : "bg-pink-400"}`}>
+              <div key={i} className={`text-center  bg-white *:p-4 hover:shadow-lg rounded-xl transition-all dark:hover:bg-gray-700 ${theme === "dark" ? "bg-white" : "bg-pink-400"}`}>
                 <div className="text-4xl mb-2">{f.icon}</div>
                 <h3 className="font-semibold mb-1 dark:text-gray-100">{f.title}</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">{f.desc}</p>
@@ -97,14 +97,14 @@ const SkincareProductPage = () => {
         </section>
 
         {/* TRENDING BRANDS */}
-        <section className="py-12 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-gray-800 dark:to-gray-700">
+        <section className="py-12   from-purple-100 to-pink-100 dark:from-gray-800 dark:to-gray-700 ">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className={`text-3xl font-bold text-center mb-8  flex items-center justify-center gap-3 ${theme === "dark" ? "bg-white" : "text-gray-800  "} `}><TrendingUp className="text-pink-500" /> Trending Brands</h2>
+            <h2 className="text-3xl font-bold text-center mb-8  text-black flex items-center justify-center gap-3  "><TrendingUp className="text-pink-500" /> Trending Brands</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {brands.slice(1).map((brand, i) => (
-                <button key={i} onClick={() => setSelectedBrand(brand)} className={`bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all ${selectedBrand === brand ? 'ring-4 ring-pink-500' : ''}`}>
+                <button key={i} onClick={() => setSelectedBrand(brand)} className={` bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all ${selectedBrand === brand ? 'ring-4 ring-pink-500' : ''}`}>
                   <div className="text-5xl mb-3">✨</div>
-                  <h3 className="font-bold text-lg dark:text-gray-100">{brand}</h3>
+                  <h3 className="font-bold text-black text-lg ">{brand}</h3>
                 </button>
               ))}
             </div>
@@ -112,11 +112,11 @@ const SkincareProductPage = () => {
         </section>
 
         {/* SEARCH & FILTERS */}
-        <div className="bg-gradient-to-r from-pink-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4">
+        <div className={` from-pink-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 ${theme === "dark" ? "bg-white" : " bg-gradient-to-r text-black "} `}>
           <div className="max-w-7xl mx-auto">
             <div className="max-w-2xl mx-auto relative mb-6">
-              <input type="text" placeholder="Search products..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full px-6 py-4 pl-12 rounded-2xl border-2 focus:outline-none focus:border-pink-500 dark:bg-gray-700 dark:text-white" />
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+              <input type="text" placeholder="Search products..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full px-6 py-4 pl-12 rounded-2xl border-2 focus:outline-none focus:border-pink-500 dark:bg-gray-700" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 " />
             </div>
 
             <div className="flex flex-wrap gap-4 items-center justify-between">
@@ -187,9 +187,9 @@ const SkincareProductPage = () => {
                 { icon: "🧪", title: "Science-Backed", desc: "Formulas backed by research and tested for safety." },
                 { icon: "🌱", title: "Clean Beauty", desc: "Natural, cruelty-free ingredients for you and the planet." }
               ].map((item, i) => (
-                <div key={i} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+                <div key={i} className="bg-white  dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
                   <div className="text-5xl mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-bold mb-3 dark:text-gray-100">{item.title}</h3>
+                  <h3 className="text-xl font-bold mb-3 text-black dark:text-gray-100">{item.title}</h3>
                   <p className="text-gray-600 dark:text-gray-300">{item.desc}</p>
                 </div>
               ))}

@@ -2,14 +2,16 @@ import React, { useContext } from "react";
 import { Trash2, Plus, Minus, ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
 import ProductContext from "../context/ProductContext";
+import ThemeContext from "../context/ThemeProvider";
 
 const CartContect = () => {
+  const {theme} = useContext(ThemeContext);
   const { cart, removeFromCart, updateQuantity, totalPrice, totalItems } =
     useContext(ProductContext);
 
   if (cart.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-pink-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 pt-24 px-4">
+      <div className={`min-h-screen  from-pink-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 pt-24 px-4 ${theme === "dark" ? "bg-white" : ""}`}>
         <div className="max-w-4xl mx-auto text-center py-16">
           <ShoppingBag className="w-24 h-24 mx-auto text-gray-300 mb-6" />
           <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">
@@ -30,7 +32,7 @@ const CartContect = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 pt-24 px-4">
+    <div className="min-h-screen  from-pink-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 pt-24 px-4">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-8">
           Shopping Cart ({totalItems} items)
@@ -42,7 +44,7 @@ const CartContect = () => {
             {cart.map((item) => (
               <div
                 key={item.id}
-                className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 flex gap-6"
+                className="bg-white text-black dark:bg-gray-800 rounded-2xl shadow-md p-6 flex gap-6"
               >
                 <img
                   src={item.image}

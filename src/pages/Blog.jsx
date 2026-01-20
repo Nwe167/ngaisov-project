@@ -105,7 +105,7 @@ const Blog = () => {
   const filteredPosts = activeTab === "All" ? posts : posts.filter(p => p.category === activeTab);
 
   return (
-    <div className={`min-h-screen mt-[80px] ${theme === "dark" ? "bg-gray-900" : "bg-gradient-to-br from-pink-50 via-white to-purple-50"}`}>
+    <div className="min-h-screen mt-[80px]  from-pink-50 via-white to-purple-50">
       
       {/* Hero Section with Animated Background */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">  
@@ -127,10 +127,10 @@ const Blog = () => {
               Your Skin
             </span>
             <br />
-            <span className="text-gray-800">Deserves the Best</span>
+            <span className="">Deserves the Best</span>
           </h1>
           
-          <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl  mb-12 max-w-2xl mx-auto leading-relaxed">
             Expert skincare advice, science-backed tips, and personalized routines to help you achieve radiant, healthy skin.
           </p>
 
@@ -155,7 +155,7 @@ const Blog = () => {
                 <div className="text-4xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   {stat.value}
                 </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className=" font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -185,7 +185,7 @@ const Blog = () => {
                 className="w-full h-[500px] object-cover transform group-hover:scale-110 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+              <div className="absolute bottom-0 left-0 right-0 p-8 ">
                 <span className="inline-block bg-pink-600 px-4 py-1 rounded-full text-sm font-semibold mb-4">
                   Featured
                 </span>
