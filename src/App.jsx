@@ -7,6 +7,10 @@ import Anchor from "./pages/Anchor";
 import Product from "./pages/Product";
 import Blog from "./pages/Blog";
 import Checkout from "./pages/Checkout ";
+import Profile from "./pages/Profile";
+
+import CartContect from "./pages/CartContect";
+import Login from "./components/Login";
 
 const App = () => {
   return (
@@ -20,11 +24,12 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/anchor" element={<Anchor />} />
-          <Route path="/product" element={<Product />} />
-
+          <Route path="/product" element={<Product />} /> 
             <Route path="/blog" element={<Blog />} />
-            <Route path="/checkout" element={<Checkout  />} />
-
+            <Route path="/contact" element={<Profile />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cartContect" element={<CartContect />} />
         </Routes>
       </main>
 

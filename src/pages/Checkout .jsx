@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import { CreditCard, Lock, ShoppingBag, Truck, Check } from 'lucide-react';
-
+import React, { useState, useContext } from 'react';
+import { CreditCard, Lock, ShoppingBag, Truck, Check, ArrowLeft } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import ProductContext from '../context/ProductContext';
 
 export default function Checkout() {
+  const { cart, totalPrice, clearCart } = useContext(ProductContext);
+  const navigate = useNavigate();
+  
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     email: '',
@@ -18,25 +22,26 @@ export default function Checkout() {
     cvv: ''
   });
 
-  const cartItems = [
-    { id: 1,
-      name: 'Premium Wireless Headphones',
-      price: 299.99, qty: 1,
-      image: '🎧' 
-    },
-    { id: 2,
-      name: 'Smart Watch Series 5', 
-      price: 399.99, qty: 1, 
-      image: '⌚' },
-    { id: 3, 
-      name: 'Laptop Stand', 
-      price: 49.99, 
-      qty: 2, 
-      image: '💻' 
-    }
-  ];
+  // If cart is empty, show empty state
+  if (cart.length === 0) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center px-4">
+        <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
+          <ShoppingBag className="w-16 h-16 mx-auto text-gray-300 mb-4" />
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Your cart is empty</h2>
+          <p className="text-gray-600 mb-6">Add some products before checking out</p>
+          <Link
+            to="/product"
+            className="inline-block px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg hover:from-indigo-700 hover:to-purple-700 transition"
+          >
+            Browse Products
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
-  const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
+  const subtotal = totalPrice;
   const shipping = 15.00;
   const tax = subtotal * 0.1;
   const total = subtotal + shipping + tax;
@@ -50,8 +55,11 @@ export default function Checkout() {
       setStep(step + 1);
     } else {
       alert('Order placed successfully! 🎉');
+      clearCart();
+      navigate('/');
     }
   };
+
   const paymentUrl = `https://link.payway.com.kh/aba?id=A04B327F1109&dynamic=true&source_caller=sdk&pid=af_app_invites&link_action=abaqr&shortlink=78waps1l&amount=${total.toFixed(2)}&created_from_app=true&acc=004489496&af_siteid=968860649&userid=A04B327F1109&code=207462&c=abaqr&af_referrer_uid=1662540068363-8782507`;
   const imgqr = `https://link.payway.com.kh/aba?id=A04B327F1109&dynamic=true&source_caller=sdk&pid=af_app_invites&link_action=abaqr&shortlink=78waps1l&amount=${total.toFixed(2)}&created_from_app=true&acc=004489496&af_siteid=968860649&userid=A04B327F1109&code=207462&c=abaqr&af_referrer_uid=1662540068363-8782507`;
 
@@ -61,11 +69,16 @@ export default function Checkout() {
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <ShoppingBag className="w-8 h-8 text-indigo-600" />
-              <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                ShopHub
-              </span>
+            <div className="flex items-center space-x-4">
+              <Link to="/cartContect" className="text-gray-600 hover:text-gray-900 transition">
+                <ArrowLeft className="w-6 h-6" />
+              </Link>
+              <div className="flex items-center space-x-2">
+                <ShoppingBag className="w-8 h-8 text-indigo-600" />
+                <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                  ShopHub
+                </span>
+              </div>
             </div>
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <Lock className="w-4 h-4" />
@@ -193,6 +206,7 @@ export default function Checkout() {
                         required
                       >
                         <option value="">Select</option>
+                        <option value="KH">Cambodia</option>
                         <option value="US">United States</option>
                         <option value="CA">Canada</option>
                         <option value="UK">United Kingdom</option>
@@ -235,7 +249,6 @@ export default function Checkout() {
                       onChange={handleInputChange}
                       placeholder="1234 5678 9012 3456"
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                      required
                     />
                   </div>
 
@@ -248,7 +261,6 @@ export default function Checkout() {
                       onChange={handleInputChange}
                       placeholder="John Doe"
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                      required
                     />
                   </div>
 
@@ -262,7 +274,6 @@ export default function Checkout() {
                         onChange={handleInputChange}
                         placeholder="MM/YY"
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                        required
                       />
                     </div>
                     <div>
@@ -275,8 +286,23 @@ export default function Checkout() {
                         placeholder="123"
                         maxLength="3"
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                        required
                       />
+                    </div>
+                  </div>
+
+                  {/* QR Payment Option */}
+                  <div className="mt-6 pt-6 border-t border-gray-200">
+                    <h3 className="font-semibold text-gray-900 mb-3 text-center">Or Pay with ABA QR Code</h3>
+                    <div className="flex flex-col items-center gap-4">
+                      <img src={imgqr} alt="ABA Payment QR" className="w-48 h-48 border-2 border-gray-200 rounded-lg" />
+                      <a
+                        href={paymentUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full text-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+                      >
+                        Pay ${total.toFixed(2)} with ABA Mobile
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -300,7 +326,7 @@ export default function Checkout() {
                     <div>
                       <h3 className="font-semibold text-gray-700 mb-2">Payment Method:</h3>
                       <p className="text-gray-600 text-sm">
-                        Card ending in {formData.cardNumber.slice(-4)}
+                        {formData.cardNumber ? `Card ending in ${formData.cardNumber.slice(-4)}` : 'ABA QR Payment'}
                       </p>
                     </div>
                   </div>
@@ -308,7 +334,7 @@ export default function Checkout() {
                   <div className="flex items-start space-x-3 bg-green-50 border border-green-200 rounded-lg p-4">
                     <Truck className="w-5 h-5 text-green-600 mt-0.5" />
                     <div>
-                      <p className="font-medium text-green-900">Free Shipping</p>
+                      <p className="font-medium text-green-900">Shipping Fee: ${shipping.toFixed(2)}</p>
                       <p className="text-sm text-green-700">Estimated delivery: 3-5 business days</p>
                     </div>
                   </div>
@@ -339,16 +365,20 @@ export default function Checkout() {
             <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 sticky top-8">
               <h3 className="text-xl font-bold text-gray-900 mb-4">Order Summary</h3>
               
-              <div className="space-y-4 mb-6">
-                {cartItems.map((item) => (
+              <div className="space-y-4 mb-6 max-h-64 overflow-y-auto">
+                {cart.map((item) => (
                   <div key={item.id} className="flex gap-3">
-                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg flex items-center justify-center text-2xl">
-                      {item.image}
-                    </div>
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-16 h-16 object-cover rounded-lg"
+                    />
                     <div className="flex-1">
                       <p className="font-medium text-sm text-gray-900">{item.name}</p>
-                      <p className="text-xs text-gray-500">Qty: {item.qty}</p>
-                      <p className="text-sm font-semibold text-indigo-600">${item.price}</p>
+                      <p className="text-xs text-gray-500">Qty: {item.quantity}</p>
+                      <p className="text-sm font-semibold text-indigo-600">
+                        ${(item.price * item.quantity).toFixed(2)}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -364,21 +394,14 @@ export default function Checkout() {
                   <span className="font-medium">${shipping.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Tax</span>
+                  <span className="text-gray-600">Tax (10%)</span>
                   <span className="font-medium">${tax.toFixed(2)}</span>
                 </div>
-                <div className="border-t border-gray-200 pt-3 flex justify-between">
+                <div className="border-t border-gray-200 pt-3 flex justify-between items-center">
                   <span className="text-lg font-bold text-gray-900">Total</span>
                   <span className="text-lg font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                     ${total.toFixed(2)}
                   </span>
-                  <span>Click here</span>
-                  <img src={imgqr} alt="" />
-              <a href={paymentUrl} target="_blank" rel="noopener noreferrer">
-              Payment By QR
-                </a>
-
-                 
                 </div>
               </div>
 

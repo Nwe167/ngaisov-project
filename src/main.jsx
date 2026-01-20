@@ -1,20 +1,22 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.jsx";
-import "flowbite";
-import { ProductProvider } from "./context/ProductContext.jsx";
 import { BrowserRouter } from "react-router-dom";
 
+import "./index.css";
+import "flowbite";
+
+import App from "./App.jsx";
+import { ProductProvider } from "./context/ProductContext.jsx";
+import { ThemeProvider } from "./context/ThemeProvider.jsx"; // ✅
+
 createRoot(document.getElementById("root")).render(
-  // 1. StrictMode
-  // 2. Router
-  // From 3. Provider
   <StrictMode>
     <BrowserRouter>
-     <ProductProvider>
-      <App />
-    </ProductProvider>
+      <ThemeProvider> {/* ✅ REQUIRED */}
+        <ProductProvider>
+          <App />
+        </ProductProvider>
+      </ThemeProvider>
     </BrowserRouter>
   </StrictMode>
 );

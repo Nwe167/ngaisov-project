@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Star, Heart, TrendingUp, Sparkles, Clock, User, ArrowRight, CheckCircle2 } from "lucide-react";
+import ThemeContext from "../context/ThemeProvider";
 
 const posts = [
   {
@@ -88,7 +89,8 @@ const testimonials = [
   },
 ];
 
-const SkincareBlog = () => {
+const Blog = () => {
+  const {theme}= useContext(ThemeContext);
   const [activeTab, setActiveTab] = useState("All");
   const [liked, setLiked] = useState({});
   const [scrolled, setScrolled] = useState(false);
@@ -103,10 +105,10 @@ const SkincareBlog = () => {
   const filteredPosts = activeTab === "All" ? posts : posts.filter(p => p.category === activeTab);
 
   return (
-    <div className="min-h-screen mt-[80px] bg-gradient-to-br from-pink-50 via-white to-purple-50">
+    <div className={`min-h-screen mt-[80px] ${theme === "dark" ? "bg-gray-900" : "bg-gradient-to-br from-pink-50 via-white to-purple-50"}`}>
       
       {/* Hero Section with Animated Background */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">  
         {/* Animated Background Blobs */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
@@ -485,4 +487,4 @@ const SkincareBlog = () => {
   );
 };
 
-export default SkincareBlog;
+export default Blog;

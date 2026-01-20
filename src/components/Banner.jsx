@@ -32,7 +32,7 @@ const Banner = () => {
     setActiveSlide((prev) => (prev + 1) % slides.length);
 
   return (
-    <section className="w-full bg-pink-200">
+    <section className="w-full bg-pink-200  ">
       <div className=" mx-auto relative overflow-hidden rounded-2xl shadow-lg">
         {/* SLIDER WRAPPER */}
         <div

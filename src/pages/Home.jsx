@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { ShoppingBag, Sparkles, TrendingUp, Award, Heart, Star } from "lucide-react";
+import ThemeContext from "../context/ThemeProvider";
 
 const Home = () => {
+  const {theme}= useContext(ThemeContext);
   const [hoveredCard, setHoveredCard] = useState(null);
 
   const categories = [
@@ -39,10 +41,10 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-50 via-white to-purple-50">
+    <div className={`min-h-screen  from-pink-50 via-white to-purple-50 ${theme === "dark" ? "" : ""}`}>
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100">
+      <section className="relative overflow-hidden from-pink-100 via-purple-100 to-blue-100">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
@@ -68,7 +70,7 @@ const Home = () => {
                 <span className="text-gray-900">Never Before</span>
               </h1>
               
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-xl  leading-relaxed">
                 Discover scientifically-proven skincare that transforms your skin from within. 
                 Premium ingredients, visible results.
               </p>
@@ -91,15 +93,15 @@ const Home = () => {
               <div className="grid grid-cols-3 gap-6 pt-8">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-gray-900">50K+</div>
-                  <div className="text-sm text-gray-600 mt-1">Happy Customers</div>
+                  <div className="text-smmt-1">Happy Customers</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-gray-900">4.9★</div>
-                  <div className="text-sm text-gray-600 mt-1">Average Rating</div>
+                  <div className="text-sm  mt-1">Average Rating</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-gray-900">100%</div>
-                  <div className="text-sm text-gray-600 mt-1">Natural</div>
+                  <div className="text-sm mt-1">Natural</div>
                 </div>
               </div>
             </div>
@@ -138,7 +140,7 @@ const Home = () => {
       <section className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Shop by Category</h2>
-          <p className="text-gray-600 text-lg">Find your perfect skincare solution</p>
+          <p className=" text-lg">Find your perfect skincare solution</p>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
@@ -153,7 +155,7 @@ const Home = () => {
                   {category.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">{category.name}</h3>
-                <p className="text-sm text-gray-600 mt-2">Explore collection →</p>
+                <p className="text-sm  mt-2">Explore collection →</p>
               </div>
             </div>
           ))}
@@ -165,7 +167,7 @@ const Home = () => {
         <div className="flex justify-between items-center mb-12">
           <div>
             <h2 className="text-4xl font-bold text-gray-900 mb-2">Trending Now</h2>
-            <p className="text-gray-600 text-lg">Our most-loved products this month</p>
+            <p className=" text-lg">Our most-loved products this month</p>
           </div>
           <button className="hidden md:block px-6 py-3 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-colors">
             View All

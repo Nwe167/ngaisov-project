@@ -1,19 +1,25 @@
 @import "tailwindcss";
 
+/* Light mode: soft pastel pink → blue */
 :root {
-  --bg-theme: #ffffff;
-  --text-theme: #000000;
+--bg-theme: #f5f3ff; /* pastel lavender */
+ --text-theme: #513e75;
 }
 
+/* Dark mode: deeper, cute gradient */
 .dark {
-  --bg-theme: #000000;
-  --text-theme: #000000;
+  --bg-theme: linear-gradient(135deg, #474474, #ff1493); /* indigo → hot pink */
+  --text-theme: #ffffff; /* white text for contrast */
 }
 
+/* Apply theme variables to body */
 body {
-  background-color: var(--bg-theme);
+  background: var(--bg-theme);
   color: var(--text-theme);
+  transition: background 0.5s ease, color 0.5s ease;
 }
+
+/* Slide down animation */
 @keyframes slideDown {
   from {
     opacity: 0;

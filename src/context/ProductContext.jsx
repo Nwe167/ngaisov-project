@@ -1,43 +1,74 @@
 import React, { createContext, useState, useEffect } from "react";
-import fetchAPI from "../utils/fetchApi";
 
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-  const [products, setProducts] = useState([]);
-  const [theme, setTheme] = useState("light"); // Add theme state
+  const [cart, setCart] = useState([]);
 
-  // Fetch products on mount
-  useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const data = await fetchAPI();
-        setProducts(data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
+  // Calculate total items in cart
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  // Add product to cart
+  const addToCart = (product) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((item) => item.id === product.id);
+      
+      if (existingItem) {
+        // If product already in cart, increase quantity
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        // Add new product with quantity 1
+        return [...prevCart, { ...product, quantity: 1 }];
       }
-    };
-    loadProducts();
-  }, []);
-
-  // Toggle theme function
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    });
   };
 
-  // Apply theme to document
-  useEffect(() => {
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-  }, [theme]);
+  // Remove product from cart
+  const removeFromCart = (productId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  };
+
+  // Update quantity
+  const updateQuantity = (productId, newQuantity) => {
+    if (newQuantity <= 0) {
+      removeFromCart(productId);
+      return;
+    }
+    
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
+
+  // Clear cart
+  const clearCart = () => {
+    setCart([]);
+  };
+
+  // Calculate total price
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   return (
-    <ProductContext.Provider value={{ 
-      products, 
-      setProducts, 
-      theme, 
-      toggleTheme 
-    }}>
+    <ProductContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,
+        totalItems,
+        totalPrice,
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );
